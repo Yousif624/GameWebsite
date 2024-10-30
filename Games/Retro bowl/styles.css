@@ -9,13 +9,17 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #000;
-    color: #cccccc;
-    overflow: hidden;
+    background: linear-gradient(135deg, #1c1e25, #2e3b4e);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
 }
 
 .container {
     text-align: center;
+    background: rgba(40, 44, 52, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
 .button-container {
@@ -31,6 +35,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    font-size: 16px;
 }
 
 button:hover {
@@ -38,17 +43,16 @@ button:hover {
 }
 
 .game-frame {
-    background: rgba(40, 44, 52, 0.9);
-    padding: 20px;
+    background: #282c34; /* Dark background for the game frame */
+    padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #canvas {
-    display: block; /* Ensures there's no extra space */
-    width: 100%;
-    height: 100%;
-    image-rendering: optimizeSpeed;
-    -webkit-interpolation-mode: nearest-neighbor;
-    border: 0;
+    display: block; /* Removes extra space below the canvas */
+    width: 100%; /* Responsive width */
+    height: auto; /* Maintains aspect ratio */
+    border: 2px solid #61dafb; /* Border for better visibility */
+    border-radius: 5px;
 }
