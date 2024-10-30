@@ -5,58 +5,50 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    background: linear-gradient(135deg, #2e3b4e, #1c1e25);
-    color: #ffffff;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    animation: fadeIn 1s;
+    height: 100vh;
+    background: #000;
+    color: #cccccc;
+    overflow: hidden;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-header {
-    background: rgba(30, 144, 255, 0.9);
-    width: 100%;
-    padding: 30px;
+.container {
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-header h1 {
-    font-size: 3em;
-    margin: 0;
-    color: #ffffff;
+.button-container {
+    margin-bottom: 20px;
 }
 
-#games {
-    padding: 50px 20px;
-    text-align: center;
+button {
+    padding: 10px 15px;
+    margin: 0 10px;
+    background: #61dafb;
+    color: #282c34;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #21a1f1;
+}
+
+.game-frame {
     background: rgba(40, 44, 52, 0.9);
-}
-
-.gm4html5_div_class {
-    margin: 20px;
-    position: relative;
-}
-
-canvas {
-    width: 90%; 
-    height: auto;
-    max-width: 800px; 
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-footer {
-    margin-top: 30px;
-    padding: 15px;
-    background: rgba(40, 44, 52, 0.9);
+#canvas {
+    display: block; /* Ensures there's no extra space */
     width: 100%;
-    text-align: center;
+    height: 100%;
+    image-rendering: optimizeSpeed;
+    -webkit-interpolation-mode: nearest-neighbor;
+    border: 0;
 }
