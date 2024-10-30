@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta charset="utf-8"/>
     <title>The Pizza Edition</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -34,8 +37,8 @@
                 gameStarted = true;
                 
                 const canvas = document.getElementById('canvas');
-                canvas.width = 800;  // Set to the native width for the game
-                canvas.height = 600; // Set to the native height for the game
+                canvas.width = window.innerWidth;  // Set canvas to full width of window
+                canvas.height = window.innerHeight; // Set canvas to full height of window
                 
                 if (typeof GameMaker_Init === "function") {
                     GameMaker_Init(); // Start the game function in RetroBowl.js
