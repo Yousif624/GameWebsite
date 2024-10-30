@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas</title>
+    <title>The Pizza Edition</title>
     <style>
         * {
             margin: 0;
@@ -43,7 +43,7 @@
         }
 
         #canvas {
-            display: none; /* Hide canvas until "PLAY NOW!" is clicked */
+            display: block;
             width: 100%;
             height: auto;
             border-radius: 5px;
@@ -59,3 +59,56 @@
         p {
             font-size: 1em;
             color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .play-button {
+            padding: 10px 20px;
+            background: #61dafb;
+            color: #282c34;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .play-button:hover {
+            background: #21a1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="game-frame">
+            <canvas id="canvas">
+                <p>Your browser doesn't support HTML5 canvas.</p>
+            </canvas>
+        </div>
+        <h1>POLYTRACK</h1>
+        <p>By: Creator</p>
+        <div class="button-container">
+            <button class="play-button" onclick="startGame()">PLAY NOW!</button>
+        </div>
+    </div>
+
+    <!-- Load the game script but don't start it immediately -->
+    <script src="html5game/RetroBowl.js" defer></script>
+
+    <script>
+        function startGame() {
+            // Initialize the game
+            if (typeof GameMaker_Init === "function") {
+                GameMaker_Init(); // Start the game function in RetroBowl.js
+            } else {
+                console.error("GameMaker_Init function not found in RetroBowl.js");
+            }
+        }
+    </script>
+</body>
+</html>
