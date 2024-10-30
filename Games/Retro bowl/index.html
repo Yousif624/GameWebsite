@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Game Page</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -17,7 +15,7 @@
         </div>
         <div class="game-frame">
             <canvas id="canvas">
-                <p>Your browser doesn't support HTML5 canvas.</p>
+                Your browser doesn't support HTML5 canvas.
             </canvas>
         </div>
     </div>
@@ -25,8 +23,8 @@
     <script>
         // Set canvas dimensions
         const canvas = document.getElementById('canvas');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = 800; // Fixed width for better layout
+        canvas.height = 600; // Fixed height for better layout
 
         // Refresh button functionality
         document.getElementById('refreshButton').onclick = function() {
@@ -37,11 +35,11 @@
         document.getElementById('fullscreenButton').onclick = function() {
             if (canvas.requestFullscreen) {
                 canvas.requestFullscreen();
-            } else if (canvas.mozRequestFullScreen) { // Firefox
+            } else if (canvas.mozRequestFullScreen) {
                 canvas.mozRequestFullScreen();
-            } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+            } else if (canvas.webkitRequestFullscreen) {
                 canvas.webkitRequestFullscreen();
-            } else if (canvas.msRequestFullscreen) { // IE/Edge
+            } else if (canvas.msRequestFullscreen) {
                 canvas.msRequestFullscreen();
             }
         };
