@@ -5,49 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Game Page</title>
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            background: #000;
+            color: #cccccc;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas {
+            image-rendering: optimizeSpeed;
+            -webkit-interpolation-mode: nearest-neighbor;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        :-webkit-full-screen #canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="button-container">
-            <button id="refreshButton">Refresh</button>
-            <button id="fullscreenButton">Fullscreen</button>
-        </div>
-        <div class="game-frame">
-            <canvas id="canvas">
-                Your browser doesn't support HTML5 canvas.
-            </canvas>
-        </div>
-    </div>
-
+    <canvas id="canvas">
+        Your browser doesn't support HTML5 canvas.
+    </canvas>
+    <script src="html5game/RetroBowl.js"></script>
     <script>
-        // Set canvas dimensions
         const canvas = document.getElementById('canvas');
-        canvas.width = 800; // Fixed width for better layout
-        canvas.height = 600; // Fixed height for better layout
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        // Refresh button functionality
-        document.getElementById('refreshButton').onclick = function() {
-            location.reload();
-        };
-
-        // Fullscreen button functionality
-        document.getElementById('fullscreenButton').onclick = function() {
-            if (canvas.requestFullscreen) {
-                canvas.requestFullscreen();
-            } else if (canvas.mozRequestFullScreen) {
-                canvas.mozRequestFullScreen();
-            } else if (canvas.webkitRequestFullscreen) {
-                canvas.webkitRequestFullscreen();
-            } else if (canvas.msRequestFullscreen) {
-                canvas.msRequestFullscreen();
-            }
-        };
-
-        // Run the game code
-        const script = document.createElement('script');
-        script.src = "html5game/RetroBowl.js";
-        document.body.appendChild(script);
+        window.onload = GameMaker_Init; // Ensure initialization occurs after loading
     </script>
 </body>
 </html>
