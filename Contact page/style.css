@@ -78,6 +78,14 @@ nav ul li a:hover {
     border-radius: 5px;
     font-size: 16px;
     width: 100%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #61dafb;
+    box-shadow: 0 0 5px rgba(97, 218, 251, 0.5);
+    outline: none; /* Remove default outline */
 }
 
 .contact-form textarea {
@@ -92,15 +100,31 @@ nav ul li a:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 .submit-button:hover {
     background: #21a1f1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 footer {
     text-align: center;
     padding: 20px;
     background: rgba(40, 44, 52, 0.9);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 30px 10px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
 }
