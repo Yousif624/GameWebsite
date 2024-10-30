@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Pizza Edition</title>
+    <title>Canvas</title>
     <style>
         * {
             margin: 0;
@@ -42,8 +42,10 @@
             margin-bottom: 20px;
         }
 
-        .game-frame img {
+        #canvas {
+            display: none; /* Hide canvas until "PLAY NOW!" is clicked */
             width: 100%;
+            height: auto;
             border-radius: 5px;
             border: 2px solid #61dafb;
         }
@@ -57,40 +59,3 @@
         p {
             font-size: 1em;
             color: #cccccc;
-            margin-bottom: 20px;
-        }
-
-        .button-container {
-            margin-top: 20px;
-        }
-
-        .play-button {
-            padding: 10px 20px;
-            background: #61dafb;
-            color: #282c34;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s;
-            text-decoration: none;
-        }
-
-        .play-button:hover {
-            background: #21a1f1;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="game-frame">
-            <img src="html5game/splash.png" alt="Polytrack Game Preview">
-        </div>
-        <h1>POLYTRACK</h1>
-        <p>By: Creator</p>
-        <div class="button-container">
-            <a href="#" class="play-button">PLAY NOW!</a>
-        </div>
-    </div>
-</body>
-</html>
