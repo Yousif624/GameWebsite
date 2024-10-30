@@ -43,11 +43,11 @@
         }
 
         #canvas {
-            display: block;
             width: 100%;
             height: auto;
             border-radius: 5px;
             border: 2px solid #61dafb;
+            image-rendering: pixelated; /* Disable smoothing for a sharper look */
         }
 
         h1 {
@@ -86,7 +86,7 @@
 <body>
     <div class="container">
         <div class="game-frame">
-            <canvas id="canvas">
+            <canvas id="canvas" width="800" height="600">
                 <p>Your browser doesn't support HTML5 canvas.</p>
             </canvas>
         </div>
@@ -102,6 +102,11 @@
 
     <script>
         function startGame() {
+            // Set canvas dimensions to avoid stretching and pixelation
+            const canvas = document.getElementById('canvas');
+            canvas.width = 800;  // Set to the native width for the game
+            canvas.height = 600; // Set to the native height for the game
+            
             // Initialize the game
             if (typeof GameMaker_Init === "function") {
                 GameMaker_Init(); // Start the game function in RetroBowl.js
