@@ -5,83 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Pizza Edition</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #1c1e25, #2e3b4e);
-            color: #ffffff;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        .container {
-            text-align: center;
-            background: rgba(40, 44, 52, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-            width: 80%;
-            max-width: 800px;
-        }
-
-        .game-frame {
-            background: #282c34;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
-        }
-
-        #canvas {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            border: 2px solid #61dafb;
-            image-rendering: pixelated; /* Disable smoothing for a sharper look */
-        }
-
-        h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: #61dafb;
-        }
-
-        p {
-            font-size: 1em;
-            color: #cccccc;
-            margin-bottom: 20px;
-        }
-
-        .button-container {
-            margin-top: 20px;
-        }
-
-        .play-button {
-            padding: 10px 20px;
-            background: #61dafb;
-            color: #282c34;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s;
-            text-decoration: none;
-        }
-
-        .play-button:hover {
-            background: #21a1f1;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -93,7 +17,9 @@
         <h1>POLYTRACK</h1>
         <p>By: Creator</p>
         <div class="button-container">
-            <button class="play-button" onclick="startGame()">PLAY NOW!</button>
+            <button onclick="startGame()">PLAY NOW!</button>
+            <button onclick="toggleFullscreen()">FULL SCREEN</button>
+            <button onclick="refreshPage()">REFRESH</button>
         </div>
     </div>
 
@@ -101,18 +27,39 @@
     <script src="html5game/RetroBowl.js" defer></script>
 
     <script>
+        let gameStarted = false; // Track if the game has started
+
         function startGame() {
-            // Set canvas dimensions to avoid stretching and pixelation
-            const canvas = document.getElementById('canvas');
-            canvas.width = 800;  // Set to the native width for the game
-            canvas.height = 600; // Set to the native height for the game
-            
-            // Initialize the game
-            if (typeof GameMaker_Init === "function") {
-                GameMaker_Init(); // Start the game function in RetroBowl.js
+            if (!gameStarted) { // Only allow the game to start once
+                gameStarted = true;
+                
+                const canvas = document.getElementById('canvas');
+                canvas.width = 800;  // Set to the native width for the game
+                canvas.height = 600; // Set to the native height for the game
+                
+                if (typeof GameMaker_Init === "function") {
+                    GameMaker_Init(); // Start the game function in RetroBowl.js
+                } else {
+                    console.error("GameMaker_Init function not found in RetroBowl.js");
+                }
             } else {
-                console.error("GameMaker_Init function not found in RetroBowl.js");
+                console.log("Game already started.");
             }
+        }
+
+        function toggleFullscreen() {
+            const container = document.querySelector(".container");
+            if (!document.fullscreenElement) {
+                container.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function refreshPage() {
+            location.reload(); // Reloads the page to reset the game
         }
     </script>
 </body>
