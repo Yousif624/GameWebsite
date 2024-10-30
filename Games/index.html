@@ -1,63 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta charset="utf-8"/>
+    <title>The Pizza Edition</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<header>
-    <div class="logo">Yousif's Site</div>
-    <nav>
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../Games/index.html">Games</a></li>
-            <li><a href="../About/index.html">About</a></li>
-            <li><a href="../Contact page/index.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section id="games">
-    <h2>Our Games</h2>
-    <div class="game-container">
-        <div class="game-card">
-            <img src="game1.jpg" alt="Game 1">
-            <h3>Game Title 1</h3>
-            <p>Short description of Game 1.</p>
-            <a href="#" class="play-button">Play Now</a>
+    <div class="container">
+        <div class="game-frame">
+            <canvas id="canvas">
+                <p>Your browser doesn't support HTML5 canvas.</p>
+            </canvas>
         </div>
-        <div class="game-card">
-            <img src="game2.jpg" alt="Game 2">
-            <h3>Game Title 2</h3>
-            <p>Short description of Game 2.</p>
-            <a href="#" class="play-button">Play Now</a>
-        </div>
-        <div class="game-card">
-            <img src="game3.jpg" alt="Game 3">
-            <h3>Game Title 3</h3>
-            <p>Short description of Game 3.</p>
-            <a href="#" class="play-button">Play Now</a>
-        </div>
-        <div class="game-card">
-            <img src="game4.jpg" alt="Game 4">
-            <h3>Game Title 4</h3>
-            <p>Short description of Game 4.</p>
-            <a href="#" class="play-button">Play Now</a>
+        <h1>POLYTRACK</h1>
+        <p>By: Creator</p>
+        <div class="button-container">
+            <button onclick="startGame()">PLAY NOW!</button>
+            <button onclick="toggleFullscreen()">FULL SCREEN</button>
+            <button onclick="refreshPage()">REFRESH</button>
         </div>
     </div>
-</section>
 
-<section id="about">
-    <h2>About Us</h2>
-    <p>Information about Yousif's Site and what we offer.</p>
-</section>
+    <!-- Load the game script but don't start it immediately -->
+    <script src="html5game/RetroBowl.js" defer></script>
 
-<footer>
-    <p>&copy; 2024 Yousif's Site. All rights reserved.</p>
-</footer>
+    <script>
+        let gameStarted = false; // Track if the game has started
 
+        function startGame() {
+            if (!gameStarted) { // Only allow the game to start once
+                gameStarted = true;
+
+                const canvas = document.getElementById('canvas');
+                canvas.width = window.innerWidth;  // Set to full window width
+                canvas.height = window.innerHeight; // Set to full window height
+
+                if (typeof GameMaker_Init === "function") {
+                    GameMaker_Init(); // Start the game function in RetroBowl.js
+                } else {
+                    console.error("GameMaker_Init function not found in RetroBowl.js");
+                }
+            } else {
+                console.log("Game already started.");
+            }
+        }
+
+        function toggleFullscreen() {
+            const container = document.querySelector(".container");
+            if (!document.fullscreenElement) {
+                container.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function refreshPage() {
+            location.reload(); // Reloads the page to reset the game
+        }
+    </script>
 </body>
 </html>
