@@ -92,7 +92,7 @@
         <h1>Retro Bowl</h1>
         <p>By: Yousif</p>
         <div class="button-container">
-            <a href="#" class="play-button" id="play-now">PLAY NOW!</a>
+            <button class="play-button" id="play-now">PLAY NOW!</button>
             <button class="refresh-button" id="refresh">Refresh</button>
             <button class="fullscreen-button" id="fullscreen">Fullscreen</button>
         </div>
@@ -100,6 +100,13 @@
 
     <!-- Game and JavaScript files -->
     <script src="html5game/RetroBowl.js"></script>
+    <script>
+        window.onload = function() {
+            document.getElementById('play-now').addEventListener('click', function() {
+                GameMaker_Init();
+            });
+        };
+    </script>
     <script src="index.js"></script>
 </body>
 </html>
