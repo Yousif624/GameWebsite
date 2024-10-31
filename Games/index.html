@@ -2,62 +2,156 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Yousif's Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1c1e25, #2e3b4e);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(40, 44, 52, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .game-frame {
+            background: #282c34;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .game-frame img {
+            width: 100%;
+            border-radius: 5px;
+            border: 2px solid #61dafb;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #61dafb;
+        }
+
+        p {
+            font-size: 1em;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .play-button, .refresh-button, .fullscreen-button {
+            padding: 10px 20px;
+            background: #61dafb;
+            color: #282c34;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .play-button:hover, .refresh-button:hover, .fullscreen-button:hover {
+            background: #21a1f1;
+        }
+
+        canvas {
+            display: none; /* Initially hidden until the game starts */
+        }
+    </style>
 </head>
 <body>
-
-<header>
-    <div class="logo">Yousif's Site</div>
-    <nav>
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../Games/index.html">Games</a></li>
-            <li><a href="../About/index.html">About</a></li>
-            <li><a href="../Contact page/index.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section id="games">
-    <h2>Our Games</h2>
-    <div class="game-container">
-        <div class="game-card">
-            <img src="game1.jpg" alt="Game 1">
-            <h3>Game Title 1</h3>
-            <p>Short description of Game 1.</p>
-            <a href="#" class="play-button">Play Now</a>
+    <div class="container">
+        <div class="game-frame" id="game-container">
+            <img src="html5game/splash.png" alt="Retro Bowl Game Preview" id="splash-image">
+            <canvas id="canvas">
+                <p>Your browser doesn't support HTML5 canvas.</p>
+            </canvas>
         </div>
-        <div class="game-card">
-            <img src="game2.jpg" alt="Game 2">
-            <h3>Game Title 2</h3>
-            <p>Short description of Game 2.</p>
-            <a href="#" class="play-button">Play Now</a>
-        </div>
-        <div class="game-card">
-            <img src="game3.jpg" alt="Game 3">
-            <h3>Game Title 3</h3>
-            <p>Short description of Game 3.</p>
-            <a href="#" class="play-button">Play Now</a>
-        </div>
-        <div class="game-card">
-            <img src="game4.jpg" alt="Game 4">
-            <h3>Game Title 4</h3>
-            <p>Short description of Game 4.</p>
-            <a href="#" class="play-button">Play Now</a>
+        <h1>Retro Bowl</h1>
+        <p>By: Yousif</p>
+        <div class="button-container">
+            <button class="play-button" id="play-now">PLAY NOW!</button>
+            <button class="refresh-button" id="refresh">Refresh</button>
+            <button class="fullscreen-button" id="fullscreen">Fullscreen</button>
         </div>
     </div>
-</section>
 
-<section id="about">
-    <h2>About Us</h2>
-    <p>Information about Yousif's Site and what we offer.</p>
-</section>
+    <!-- Game and JavaScript files -->
+    <script src="html5game/RetroBowl.js"></script>
+    <script>
+        // Setting up canvas dimensions
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
 
-<footer>
-    <p>&copy; 2024 Yousif's Site. All rights reserved.</p>
-</footer>
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
+        // Function to initialize the game
+        function GameMaker_Init() {
+            console.log("Game initialization started."); // Debugging message
+            if (typeof window.GameMaker_Init === 'function') {
+                window.GameMaker_Init();
+                document.getElementById('splash-image').style.display = 'none'; // Hide splash image
+                canvas.style.display = 'block'; // Show canvas
+            } else {
+                console.error("GameMaker_Init function not found.");
+            }
+        }
+
+        // Call GameMaker_Init on page load
+        window.onload = GameMaker_Init;
+
+        // Start game on clicking Play Now button
+        document.getElementById("play-now").addEventListener("click", function () {
+            console.log("Play Now button clicked."); // Debugging message
+            GameMaker_Init(); // Initialize game when button clicked
+        });
+
+        // Refresh the page
+        document.getElementById("refresh").addEventListener("click", function () {
+            location.reload();
+        });
+
+        // Fullscreen mode
+        document.getElementById("fullscreen").addEventListener("click", function () {
+            const gameContainer = document.getElementById("game-container");
+            if (gameContainer.requestFullscreen) {
+                gameContainer.requestFullscreen();
+            } else if (gameContainer.mozRequestFullScreen) {
+                gameContainer.mozRequestFullScreen();
+            } else if (gameContainer.webkitRequestFullscreen) {
+                gameContainer.webkitRequestFullscreen();
+            } else if (gameContainer.msRequestFullscreen) {
+                gameContainer.msRequestFullscreen();
+            }
+        });
+    </script>
 </body>
 </html>
