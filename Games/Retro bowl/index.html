@@ -88,6 +88,9 @@
     <div class="container">
         <div class="game-frame" id="game-container">
             <img src="html5game/splash.png" alt="Retro Bowl Game Preview">
+            <canvas id="canvas">
+                <p>Your browser doesn't support HTML5 canvas.</p>
+            </canvas>
         </div>
         <h1>Retro Bowl</h1>
         <p>By: Yousif</p>
@@ -100,6 +103,47 @@
 
     <!-- Game and JavaScript files -->
     <script src="html5game/RetroBowl.js"></script>
-    <script src="index.js"></script>
+    <script>
+        // Set canvas dimensions
+        const canvas = document.getElementById('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Start game on clicking Play Now button
+        document.getElementById("play-now").addEventListener("click", function (event) {
+            event.preventDefault();
+            GameMaker_Init(); // Assuming this initializes the game
+        });
+
+        // Refresh the page
+        document.getElementById("refresh").addEventListener("click", function () {
+            location.reload();
+        });
+
+        // Fullscreen mode
+        document.getElementById("fullscreen").addEventListener("click", function () {
+            const gameContainer = document.getElementById("game-container");
+            if (gameContainer.requestFullscreen) {
+                gameContainer.requestFullscreen();
+            } else if (gameContainer.mozRequestFullScreen) { // Firefox
+                gameContainer.mozRequestFullScreen();
+            } else if (gameContainer.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                gameContainer.webkitRequestFullscreen();
+            } else if (gameContainer.msRequestFullscreen) { // IE/Edge
+                gameContainer.msRequestFullscreen();
+            }
+        });
+
+        // Function to initialize the game
+        function GameMaker_Init() {
+            // Assuming RetroBowl.js initializes the game; include any other necessary setup here
+            // This function should be defined in your RetroBowl.js file
+            if (typeof window.GameMaker_Init === 'function') {
+                window.GameMaker_Init();
+            } else {
+                console.error("GameMaker_Init function not found.");
+            }
+        }
+    </script>
 </body>
 </html>
