@@ -2,96 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Page</title>
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        function startGame() {
-            // Show the game canvas and initialize the game
-            document.getElementById('gameCanvasContainer').style.display = 'block';
-            GameMaker_Init();
-        }
-    </script>
+    <title>Yousif's Site</title>
     <style>
-        #gameCanvasContainer {
-            display: none; /* Hide the game canvas initially */
-            background: #000;
-            color: #cccccc;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1c1e25, #2e3b4e);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
             overflow: hidden;
         }
-        canvas {
+
+        .container {
+            text-align: center;
+            background: rgba(40, 44, 52, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .game-frame {
+            background: #282c34;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .game-frame img {
             width: 100%;
-            height: 100%;
+            border-radius: 5px;
+            border: 2px solid #61dafb;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #61dafb;
+        }
+
+        p {
+            font-size: 1em;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .play-button, .refresh-button, .fullscreen-button {
+            padding: 10px 20px;
+            background: #61dafb;
+            color: #282c34;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .play-button:hover, .refresh-button:hover, .fullscreen-button:hover {
+            background: #21a1f1;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="logo">Yousif's Site</div>
-    <nav>
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../Games/index.html">Games</a></li>
-            <li><a href="../About/index.html">About</a></li>
-            <li><a href="../Contact page/index.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section id="games">
-    <h2>Our Games</h2>
-    <div class="game-container">
-        <div class="game-card">
-            <img src="game1.jpg" alt="Game 1">
-            <h3>Game Title 1</h3>
-            <p>Short description of Game 1.</p>
-            <a href="#" class="play-button" onclick="startGame()">Play Now</a>
+    <div class="container">
+        <div class="game-frame" id="game-container">
+            <img src="html5game/splash.png" alt="Retro Bowl Game Preview">
         </div>
-        <div class="game-card">
-            <img src="game2.jpg" alt="Game 2">
-            <h3>Game Title 2</h3>
-            <p>Short description of Game 2.</p>
-            <a href="#" class="play-button">Play Now</a>
-        </div>
-        <div class="game-card">
-            <img src="game3.jpg" alt="Game 3">
-            <h3>Game Title 3</h3>
-            <p>Short description of Game 3.</p>
-            <a href="#" class="play-button">Play Now</a>
-        </div>
-        <div class="game-card">
-            <img src="game4.jpg" alt="Game 4">
-            <h3>Game Title 4</h3>
-            <p>Short description of Game 4.</p>
-            <a href="#" class="play-button">Play Now</a>
+        <h1>Retro Bowl</h1>
+        <p>By: Yousif</p>
+        <div class="button-container">
+            <a href="#" class="play-button" id="play-now">PLAY NOW!</a>
+            <button class="refresh-button" id="refresh">Refresh</button>
+            <button class="fullscreen-button" id="fullscreen">Fullscreen</button>
         </div>
     </div>
-</section>
 
-<section id="gameCanvasContainer">
-    <img src="html5game/splash.png" id="GM4HTML5_loadingscreen" alt="GameMaker:HTML5 loading screen" style="display:none;"/>
-    <canvas id="canvas">
-        <p>Your browser doesn't support HTML5 canvas.</p>
-    </canvas>
-    <script>
-        document.querySelector('canvas').width = window.innerWidth;
-        document.querySelector('canvas').height = window.innerHeight;
-    </script>
-    <!-- Run the game code -->
-    <script type="text/javascript" src="html5game/RetroBowl.js"></script>
-</section>
-
-<section id="about">
-    <h2>About Us</h2>
-    <p>Information about Yousif's Site and what we offer.</p>
-</section>
-
-<footer>
-    <p>&copy; 2024 Yousif's Site. All rights reserved.</p>
-</footer>
-
+    <!-- Game and JavaScript files -->
+    <script src="html5game/RetroBowl.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
