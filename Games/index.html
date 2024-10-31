@@ -20,6 +20,7 @@
             background: linear-gradient(135deg, #1c1e25, #2e3b4e);
             color: #ffffff;
             font-family: 'Arial', sans-serif;
+            margin: 0;
             overflow: hidden;
         }
 
@@ -75,29 +76,23 @@
             cursor: pointer;
             font-size: 18px;
             transition: background 0.3s;
+            text-decoration: none;
         }
 
         .play-button:hover, .refresh-button:hover, .fullscreen-button:hover {
             background: #21a1f1;
-        }
-
-        canvas {
-            display: none; /* Initially hidden until the game starts */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="game-frame" id="game-container">
-            <img src="html5game/splash.png" alt="Retro Bowl Game Preview" id="splash-image">
-            <canvas id="canvas">
-                <p>Your browser doesn't support HTML5 canvas.</p>
-            </canvas>
+            <img src="html5game/splash.png" alt="Retro Bowl Game Preview">
         </div>
         <h1>Retro Bowl</h1>
         <p>By: Yousif</p>
         <div class="button-container">
-            <button class="play-button" id="play-now">PLAY NOW!</button>
+            <a href="#" class="play-button" id="play-now">PLAY NOW!</a>
             <button class="refresh-button" id="refresh">Refresh</button>
             <button class="fullscreen-button" id="fullscreen">Fullscreen</button>
         </div>
@@ -105,53 +100,6 @@
 
     <!-- Game and JavaScript files -->
     <script src="html5game/RetroBowl.js"></script>
-    <script>
-        // Setting up canvas dimensions
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        // Function to initialize the game
-        function GameMaker_Init() {
-            console.log("Game initialization started."); // Debugging message
-            if (typeof window.GameMaker_Init === 'function') {
-                window.GameMaker_Init();
-                document.getElementById('splash-image').style.display = 'none'; // Hide splash image
-                canvas.style.display = 'block'; // Show canvas
-            } else {
-                console.error("GameMaker_Init function not found.");
-            }
-        }
-
-        // Call GameMaker_Init on page load
-        window.onload = GameMaker_Init;
-
-        // Start game on clicking Play Now button
-        document.getElementById("play-now").addEventListener("click", function () {
-            console.log("Play Now button clicked."); // Debugging message
-            GameMaker_Init(); // Initialize game when button clicked
-        });
-
-        // Refresh the page
-        document.getElementById("refresh").addEventListener("click", function () {
-            location.reload();
-        });
-
-        // Fullscreen mode
-        document.getElementById("fullscreen").addEventListener("click", function () {
-            const gameContainer = document.getElementById("game-container");
-            if (gameContainer.requestFullscreen) {
-                gameContainer.requestFullscreen();
-            } else if (gameContainer.mozRequestFullScreen) {
-                gameContainer.mozRequestFullScreen();
-            } else if (gameContainer.webkitRequestFullscreen) {
-                gameContainer.webkitRequestFullscreen();
-            } else if (gameContainer.msRequestFullscreen) {
-                gameContainer.msRequestFullscreen();
-            }
-        });
-    </script>
+    <script src="path/to/your/index.js"></script>
 </body>
 </html>
