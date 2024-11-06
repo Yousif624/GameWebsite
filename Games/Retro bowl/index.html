@@ -13,13 +13,10 @@
             <canvas id="canvas" width="800" height="600"></canvas>
         </div>
         <div class="play-banner">
-            <!-- Refresh Button with Icon -->
             <button id="refreshButton">
                 <img src="https://img.icons8.com/ios/50/000000/refresh.png" alt="Refresh" />
             </button>
-            <!-- Play Now Button -->
             <button id="playButton">Play Now</button>
-            <!-- Full Screen Button with Icon -->
             <button id="fullScreenButton">
                 <img src="https://img.icons8.com/ios/50/000000/full-screen.png" alt="Full Screen" />
             </button>
@@ -27,40 +24,6 @@
     </div>
 
     <script src="https://yousif624.github.io/games/Games/Retrobowl/RetroBowl.js"></script>
-    <script>
-        // Play button functionality
-        document.getElementById('playButton').addEventListener('click', () => {
-            try {
-                // Replace "startGame()" with the actual function that starts the game in RetroBowl.js
-                if (typeof startGame === "function") {
-                    startGame();  // Calls the game start function from RetroBowl.js
-                } else {
-                    alert("Game start function not found.");
-                }
-            } catch (error) {
-                console.error("Error starting the game:", error);
-                alert("An error occurred while starting the game. Check the console for details.");
-            }
-        });
-
-        // Full screen functionality
-        document.getElementById('fullScreenButton').addEventListener('click', () => {
-            const canvas = document.getElementById('canvas');
-            if (canvas.requestFullscreen) {
-                canvas.requestFullscreen();
-            } else if (canvas.mozRequestFullScreen) { // Firefox
-                canvas.mozRequestFullScreen();
-            } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari, Opera
-                canvas.webkitRequestFullscreen();
-            } else if (canvas.msRequestFullscreen) { // IE/Edge
-                canvas.msRequestFullscreen();
-            }
-        });
-
-        // Refresh button functionality
-        document.getElementById('refreshButton').addEventListener('click', () => {
-            location.reload();
-        });
-    </script>
+    <script src="index.js"></script> <!-- Link to your custom JavaScript -->
 </body>
 </html>
