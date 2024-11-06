@@ -1,16 +1,7 @@
 // Play Now button functionality
 document.getElementById('playButton').addEventListener('click', () => {
-    try {
-        // Check if the game start function is available in RetroBowl.js
-        if (typeof startGame === "function") {
-            startGame();  // Replace with the actual function that starts the game
-        } else {
-            alert("Game start function not found.");
-        }
-    } catch (error) {
-        console.error("Error starting the game:", error);
-        alert("An error occurred while starting the game. Check the console for details.");
-    }
+    // Simply reload the page to restart the game
+    location.reload();
 });
 
 // Full Screen button functionality
@@ -29,5 +20,5 @@ document.getElementById('fullScreenButton').addEventListener('click', () => {
 
 // Refresh button functionality
 document.getElementById('refreshButton').addEventListener('click', () => {
-    location.reload();  // Reloads the page to restart the game
+    location.reload();  // Reload the page to restart the game
 });
