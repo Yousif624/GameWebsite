@@ -1,9 +1,3 @@
-// Play Now button functionality
-document.getElementById('playButton').addEventListener('click', () => {
-    // Simply reload the iframe to restart the game
-    document.getElementById('gameIframe').contentWindow.location.reload();
-});
-
 // Full Screen button functionality
 document.getElementById('fullScreenButton').addEventListener('click', () => {
     const iframe = document.getElementById('gameIframe');
