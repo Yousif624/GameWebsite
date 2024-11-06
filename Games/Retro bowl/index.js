@@ -7,6 +7,7 @@ document.getElementById('playButton').addEventListener('click', () => {
 // Full Screen button functionality
 document.getElementById('fullScreenButton').addEventListener('click', () => {
     const iframe = document.getElementById('gameIframe');
+    
     if (iframe.requestFullscreen) {
         iframe.requestFullscreen();
     } else if (iframe.mozRequestFullScreen) { // Firefox
