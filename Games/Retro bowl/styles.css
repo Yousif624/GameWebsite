@@ -1,9 +1,11 @@
+/* Reset default margins and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Center the main container in the viewport */
 body {
     display: flex;
     justify-content: center;
@@ -14,6 +16,7 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+/* Main container styling */
 .container {
     text-align: center;
     background: rgba(40, 44, 52, 0.9);
@@ -22,37 +25,48 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
-.button-container {
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 10px 15px;
-    margin: 0 10px;
-    background: #61dafb;
-    color: #282c34;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-size: 16px;
-}
-
-button:hover {
-    background: #21a1f1;
-}
-
+/* Styling for the game frame */
 .game-frame {
     background: #282c34; /* Dark background for the game frame */
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px; /* Space below game frame */
 }
 
+/* Canvas styling */
 #canvas {
     display: block; /* Removes extra space below the canvas */
     width: 100%; /* Responsive width */
     height: auto; /* Maintains aspect ratio */
     border: 2px solid #61dafb; /* Border for better visibility */
     border-radius: 5px;
+}
+
+/* Banner below the canvas with buttons */
+.play-banner {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: rgba(40, 44, 52, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* General button styling */
+.play-banner button {
+    padding: 10px 15px;
+    margin: 0 5px;
+    background: #61dafb;
+    color: #282c34;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+/* Button hover effect */
+.play-banner button:hover {
+    background: #21a1f1;
 }
