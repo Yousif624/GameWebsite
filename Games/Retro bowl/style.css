@@ -55,8 +55,8 @@ body {
 
 /* General button styling */
 .play-banner button {
-    padding: 10px 15px;
-    margin: 0 5px;
+    padding: 5px 10px; /* Smaller padding */
+    margin: 0 5px; /* Space between buttons */
     background: #61dafb;
     color: #282c34;
     border: none;
@@ -64,6 +64,8 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s;
+    width: 40px;  /* Smaller width */
+    height: 40px; /* Smaller height */
 }
 
 /* Styling for buttons with icons */
