@@ -66,6 +66,13 @@ body {
     transition: background 0.3s;
 }
 
+/* Styling for buttons with icons */
+.play-banner button img {
+    width: 24px; /* Set icon size */
+    height: 24px;
+    vertical-align: middle; /* Align icon with text */
+}
+
 /* Button hover effect */
 .play-banner button:hover {
     background: #21a1f1;
