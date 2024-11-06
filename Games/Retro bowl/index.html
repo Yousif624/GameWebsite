@@ -9,19 +9,41 @@
 <body>
     <div class="container">
         <h1>Retro Bowl</h1>
-        <div class="button-container">
-            <button id="playButton">Play Now</button>
-        </div>
         <div class="game-frame">
             <canvas id="canvas" width="800" height="600"></canvas>
+        </div>
+        <div class="play-banner">
+            <button id="playButton">Play Now</button>
+            <button id="fullScreenButton">Full Screen</button>
+            <button id="refreshButton">Refresh</button>
         </div>
     </div>
 
     <script src="https://yousif624.github.io/games/Games/Retrobowl/RetroBowl.js"></script>
     <script>
+        // Play button functionality
         document.getElementById('playButton').addEventListener('click', () => {
-            // Placeholder action to start the game; replace with game start function if available
             alert("Game is starting...");
+            // Start the game here if RetroBowl.js has a function for it
+        });
+
+        // Full screen functionality
+        document.getElementById('fullScreenButton').addEventListener('click', () => {
+            const canvas = document.getElementById('canvas');
+            if (canvas.requestFullscreen) {
+                canvas.requestFullscreen();
+            } else if (canvas.mozRequestFullScreen) { // Firefox
+                canvas.mozRequestFullScreen();
+            } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                canvas.webkitRequestFullscreen();
+            } else if (canvas.msRequestFullscreen) { // IE/Edge
+                canvas.msRequestFullscreen();
+            }
+        });
+
+        // Refresh button functionality
+        document.getElementById('refreshButton').addEventListener('click', () => {
+            location.reload();
         });
     </script>
 </body>
