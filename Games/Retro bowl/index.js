@@ -1,24 +1,24 @@
 // Play Now button functionality
 document.getElementById('playButton').addEventListener('click', () => {
-    // Simply reload the page to restart the game
-    location.reload();
+    // Simply reload the iframe to restart the game
+    document.getElementById('gameIframe').contentWindow.location.reload();
 });
 
 // Full Screen button functionality
 document.getElementById('fullScreenButton').addEventListener('click', () => {
-    const canvas = document.getElementById('canvas');
-    if (canvas.requestFullscreen) {
-        canvas.requestFullscreen();
-    } else if (canvas.mozRequestFullScreen) { // Firefox
-        canvas.mozRequestFullScreen();
-    } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari, Opera
-        canvas.webkitRequestFullscreen();
-    } else if (canvas.msRequestFullscreen) { // IE/Edge
-        canvas.msRequestFullscreen();
+    const iframe = document.getElementById('gameIframe');
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+    } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        iframe.webkitRequestFullscreen();
+    } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
     }
 });
 
 // Refresh button functionality
 document.getElementById('refreshButton').addEventListener('click', () => {
-    location.reload();  // Reload the page to restart the game
+    document.getElementById('gameIframe').contentWindow.location.reload(); // Reload the iframe
 });
