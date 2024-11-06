@@ -19,12 +19,21 @@
         </div>
     </div>
 
-    <script src="https://yousif624.github.io/games/Games/Retrobowl/index.html"></script>
+    <script src="https://yousif624.github.io/games/Games/Retrobowl/RetroBowl.js"></script>
     <script>
         // Play button functionality
         document.getElementById('playButton').addEventListener('click', () => {
-            alert("Game is starting...");
-            // Start the game here if RetroBowl.js has a function for it
+            try {
+                // Replace "startGame()" with the actual function that starts the game in RetroBowl.js
+                if (typeof startGame === "function") {
+                    startGame();  // Calls the game start function from RetroBowl.js
+                } else {
+                    alert("Game start function not found.");
+                }
+            } catch (error) {
+                console.error("Error starting the game:", error);
+                alert("An error occurred while starting the game. Check the console for details.");
+            }
         });
 
         // Full screen functionality
