@@ -6,11 +6,10 @@
     <title>Retro Bowl Game</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Ensures the game container is centered and has a max width/height */
+        /* Expands the game container to take up more space */
         .game-frame {
             width: 100%;
-            max-width: 1200px; /* Increased maximum width */
-            max-height: 900px; /* Increased maximum height */
+            height: 90vh; /* Takes up 90% of the viewport height */
             margin: 0 auto; /* Centers the game container */
             position: relative;
             overflow: hidden; /* Prevents overflowing content */
@@ -20,7 +19,7 @@
             width: 100%;
             height: 100%;
             border: none;
-            object-fit: contain; /* Ensures the game fits within the frame without overflow */
+            object-fit: cover; /* Ensures the game fills the frame */
         }
 
         /* Fullscreen styles to make the iframe fill the entire screen when fullscreen is triggered */
